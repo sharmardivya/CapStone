@@ -45,25 +45,7 @@ User → Gradio chatbot → LangGraph orchestrator
 
 A complete plan takes 20–30 seconds; follow-up questions are answered in 1–2 seconds.
 
-## 4. My Hands-on Experience
-
-The code ran on the first attempt only rarely. Most of my learning came from diagnosing real problems:
-
-| Problem I faced | What was actually wrong | How I solved it |
-|---|---|---|
-| The virtual environment would not activate on Windows | PowerShell blocks `Activate.ps1` | Used `uv run`, which needs no activation |
-| A table cell failed with "Missing optional dependency Jinja2" | pandas styling needs an extra package | Added the dependency to the project |
-| The notebook output area showed "Failed to fetch dynamically imported module" | A stale editor cache after an update, not my code | Reloaded the editor window |
-| The pipeline froze at the final step for minutes | One OpenAI client was shared across several threads, each with its own event loop | Gave each agent its own client, and added a 60-second timeout |
-| Destination research failed with "Expecting value: line 1 column 1" | Wikipedia was rate-limiting the `wikipedia` library's generic User-Agent (HTTP 429) | Called the Wikipedia API directly with a descriptive User-Agent |
-| The chatbot forgot my trip when I replied with my employee ID | Each message was treated as a new request, and the ID pattern only accepted four digits | Combined messages of the request in progress, and accepted any `E` + digits |
-| Clicking an example sent it immediately, with no chance to edit | Default Gradio behaviour | Changed the setting so examples only fill the input box |
-| My commits appeared under another person's name on GitHub | The computer's global Git identity belonged to someone else | Set my own identity for this repository only |
-| The app worked locally but could not be deployed as-is | It listened only on `127.0.0.1:7860` and carried notebook-only packages | Listened on `0.0.0.0` and Render's `PORT`, and trimmed the dependencies |
-
-Two lessons stood out. First, **the error message often points away from the real cause**: a JSON parsing error was really a rate limit, and a frozen pipeline was really an event-loop problem. Second, **testing each change against a real run** caught issues that reading the code alone would have missed.
-
-## 5. New Learnings
+## 4. New Learnings
 
 **Agent-to-Agent (A2A) protocol**
 - An agent publishes an **AgentCard** at `/.well-known/agent.json` so others can discover what it does.
@@ -93,7 +75,7 @@ Two lessons stood out. First, **the error message often points away from the rea
 - Deploying to Render: binding to `0.0.0.0` and `$PORT`, and storing secrets in environment variables.
 - Git hygiene: never committing API keys, and keeping a correct repository identity.
 
-## 6. Future Improvements
+## 5. Future Improvements
 
 - Run the destination, weather and budget steps **in parallel** to cut 8–10 seconds from each request.
 - Connect to a **real HR system**, and let the employee apply for leave directly from the plan.
@@ -101,7 +83,7 @@ Two lessons stood out. First, **the error message often points away from the rea
 - Add an **automated test suite** that runs on every change.
 - Remember preferences across sessions, such as budget level or travel style.
 
-## 7. Conclusion
+## 6. Conclusion
 
 The project met all four requirements: an A2A-compliant HR agent, the employee ID as an input, a travel plan that ends with the leave balance, and a synthetic SQLite database of five employees. Beyond the requirements, it became a modular, documented and deployable application.
 
