@@ -1,0 +1,14 @@
+# Secrets and local environment
+.env
+.venv/
+
+# Generated at run time
+__pycache__/
+outputs/
+*.db
+.gradio/
+
+# Editor and OS leftovers
+.ipynb_checkpoints
+~$*
+*.stackdump
