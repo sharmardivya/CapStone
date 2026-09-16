@@ -56,7 +56,6 @@ LangGraph orchestrator
 git clone https://github.com/sharmardivya/CapStone.git
 cd CapStone
 git checkout a2a-travel-planner
-cd a2a_travel_planner_modular
 ```
 
 ### Step 2 — Add your OpenAI key
@@ -106,7 +105,7 @@ then opens in your browser. Press `Ctrl+C` in the terminal to stop.
 
 ### Other commands
 
-With `uv`, run these from the `a2a_travel_planner_modular` folder
+With `uv`, run these from the project folder (`CapStone`)
 (with `pip`, replace `uv run python` by `.venv\Scripts\python` or `.venv/bin/python`):
 
 | Command | What it does |
@@ -151,7 +150,7 @@ and does not try to open a browser.
    |---|---|
    | **Name** | `a2a-travel-planner` (any name) |
    | **Branch** | `a2a-travel-planner` |
-   | **Root Directory** | `a2a_travel_planner_modular` |
+   | **Root Directory** | leave empty (the project is at the repository root) |
    | **Language / Runtime** | `Python 3` |
    | **Build Command** | `pip install -r requirements.txt` |
    | **Start Command** | `python run_chatbot.py --no-browser` |
@@ -169,13 +168,11 @@ and does not try to open a browser.
 
 ### Option B — Deploy with the Blueprint (`render.yaml`)
 
-`render.yaml` in this folder contains the same settings.
+`render.yaml` at the repository root contains the same settings, so Render finds it automatically.
 
 1. In the Render Dashboard click **New → Blueprint**.
 2. Select the repository and the branch `a2a-travel-planner`.
-3. Set the **Blueprint file path** to `a2a_travel_planner_modular/render.yaml`.
-   If your Render screen has no path field, copy `render.yaml` to the repository root, commit and push.
-4. Enter your `OPENAI_API_KEY` when Render asks for it, then click **Apply**.
+3. Enter your `OPENAI_API_KEY` when Render asks for it, then click **Apply**.
 
 ### Check the deployment
 
@@ -266,7 +263,7 @@ All settings live in `travel_planner/config.py`. These can be changed with envir
 ## 5. Project structure
 
 ```
-a2a_travel_planner_modular/
+CapStone/
 ├── run_chatbot.py              Entry point: browser chatbot (used by Render)
 ├── run_cli.py                  Entry point: one plan in the terminal
 ├── run_agents.py               Entry point: start the four agents only
@@ -302,8 +299,8 @@ a2a_travel_planner_modular/
 | `OpenAI API key check failed` | The message gives the reason: wrong key, no credit, or no internet. Check `.env` locally, or the `OPENAI_API_KEY` variable on Render. |
 | `Port 8001 is used by another program` | Another copy of the app is still running. Stop it (`Ctrl+C`) and start again. |
 | Local port 7860 is busy | Add `CHATBOT_PORT=7861` to `.env`. |
-| Render build fails on Python version | Make sure `PYTHON_VERSION` is `3.12.12` and **Root Directory** is `a2a_travel_planner_modular`. |
-| Render: `requirements.txt` not found | **Root Directory** must be `a2a_travel_planner_modular`. |
+| Render build fails on Python version | Make sure `PYTHON_VERSION` is `3.12.12`. |
+| Render: `requirements.txt` not found | Leave **Root Directory** empty; the project is at the repository root. |
 | Render: service restarts with *out of memory* | Change the instance type from `Free` to `Starter`. |
 | Render: first page load is slow | Free services sleep when idle; wait about a minute for them to wake. |
 | Destination section says Wikipedia failed | Temporary Wikipedia problem; the plan is still written from the model's own knowledge. |

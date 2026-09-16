@@ -12,7 +12,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# a2a_travel_planner_modular/ — the folder containing run_chatbot.py and .env
+# Project root — the folder containing run_chatbot.py and .env
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 # Read OPENAI_API_KEY (and the optional overrides below) from that folder's .env

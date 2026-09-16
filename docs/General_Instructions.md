@@ -53,7 +53,7 @@ One responsibility per file; each agent, tool and workflow step has its own modu
 
 **Project Structure:**
 ```
-a2a_travel_planner_modular/
+CapStone/
 ├── run_chatbot.py                  # Entry point: browser chatbot
 ├── run_cli.py                      # Entry point: one plan in the terminal
 ├── run_agents.py                   # Entry point: start the agents only

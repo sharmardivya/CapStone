@@ -3,13 +3,11 @@
 # inside the same service on internal ports 8001–8004.
 #
 # To use it: Render Dashboard → New → Blueprint → choose this repository and
-# branch → set the Blueprint file path to  a2a_travel_planner_modular/render.yaml
-# (if your Render screen has no path field, copy this file to the repository root).
+# the branch; Render finds this file at the repository root automatically.
 services:
   - type: web
     name: a2a-travel-planner
     runtime: python
-    rootDir: a2a_travel_planner_modular
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python run_chatbot.py --no-browser
