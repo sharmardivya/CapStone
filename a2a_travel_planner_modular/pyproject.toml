@@ -1,0 +1,21 @@
+[project]
+name = "a2a-travel-planner"
+version = "1.0.0"
+description = "Multi-agent travel planner: a LangGraph orchestrator calls four A2A agents (HR leave, destination, weather, budget)."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.121.2",
+    "gradio==6.15.1",
+    "httpx==0.28.1",
+    "langchain==1.3.9",
+    "langchain-core==1.4.7",
+    "langchain-openai==1.3.2",
+    "langgraph==1.2.5",
+    "matplotlib==3.10.3",
+    "openai==2.42.0",
+    "pandas==2.2.2",
+    "pydantic==2.12.5",
+    "python-dotenv==1.2.2",
+    "uvicorn==0.38.0",
+]
